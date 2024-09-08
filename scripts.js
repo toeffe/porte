@@ -63,9 +63,15 @@ function newrow(number) {
                     </div>
                 `);
             } }
+            document.addEventListener('DOMContentLoaded', async function () {
+              div = document.getElementById("container")
+             
+              div.innerHTML = newrow()
+             
+             
+             }
 
 
-            
             // Function to change the color of the row based on dropdown selection
 function changeColor(rowNumber, selectedOption) {
   const row = document.getElementById(`row-${rowNumber}`);

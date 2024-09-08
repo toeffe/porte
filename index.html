@@ -1,77 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Port Husker</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="css/text.css" type="text/css" media="screen" charset="utf-8" />
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script type="text/javascript" src="js/underscore-min.js"></script>
-  <script type="text/javascript" src="js/gooss.js"></script>
-  <script type="text/javascript">
-    var url = "https://docs.google.com/spreadsheets/d/1qkFgiNkCF09Vpft7k5x6fEb3mqTFIOV1bjQSefbN85c/edit?usp=sharing";
-
-    document.addEventListener("DOMContentLoaded", function() {
-      // TODO: Change "sheet_name" to the name you want to use
-      gooss.data({ sheet_name: {url: url, index: 0} }, function(err, data) {
-        if (err) {
-          document.getElementById("loading").innerHTML = "Error: " + err;
-          return;
-        }
-        gooss.template(data);
-        document.getElementById("loading").style.display = "none";
-      });
-    }, false);
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entry to Google Sheets</title>
 </head>
 <body>
-  <h1>Port nummer - Info - Handling - Kunde</h1>
+    <div id="data-rows">
+        <!-- Row 1 -->
+        <div class="row">
+            <label>Port 1:</label>
+            <input type="text" class="inputText" placeholder="Enter Text">
+            <select class="dropdown1">
+                <option value="Unload">Unload</option>
+                <option value="Load">Load</option>
+                <option value="Special">Special</option>
+            </select>
+            <select class="dropdown2">
+                <option value="Option1">Option 1</option>
+                <option value="Option2">Option 2</option>
+                <option value="Option3">Option 3</option>
+                <option value="Option4">Option 4</option>
+                <option value="Option5">Option 5</option>
+                <option value="Option6">Option 6</option>
+                <option value="Option7">Option 7</option>
+                <option value="Option8">Option 8</option>
+            </select>
+            <button onclick="sendData(1)">Submit Row</button>
+        </div>
+        <!-- Repeat rows as needed -->
+    </div>
 
-  <div class="container">
-    <!-- Create rows from 1 to 15 -->
     <script>
-        for (let i = 1; i <= 15; i++) {
-            document.write(`
-                <div class="row" id="row-${i}">
-                    <span class="number">Port ${i}</span>
-                    <input type="text" placeholder="Info" class="row-input" id="input-${i}">
-                    
-                    <!-- First dropdown menu (same as before) -->
-                    <select class="color-select" onchange="changeColor(${i}, this.value)">
-                        <option value="default"></option>
-                        <option value="unload">Unload</option>
-                        <option value="load">Load</option>
-                        <option value="special">Special</option>
-                    </select>
+        // Your Google Apps Script Web App URL (replace YOUR_DEPLOYED_SCRIPT_URL with the actual URL)
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbx6eOA7RZDqK7XwxXKVA5jHgUL0W8n1V8z_39hJoi-CAnZQV3jUaPKYz90jc-61XVXB/exec';
 
-                    <!-- Second dropdown menu with 8 options -->
-                    <select class="option-select">
-                        <option value="option1"></option>
-                        <option value="option2">ARDO</option>
-                        <option value="option3">TCB</option>
-                        <option value="option4">Flensted</option>
-                        <option value="option5">TF</option>
-                    </select>
+        function sendData(rowNumber) {
+            // Select the row's input fields and dropdowns
+            const row = document.querySelectorAll(".row")[rowNumber - 1];
+            const inputText = row.querySelector(".inputText").value;
+            const dropdown1 = row.querySelector(".dropdown1").value;
+            const dropdown2 = row.querySelector(".dropdown2").value;
 
-                    <button onclick="clearRow(${i})">Clear row</button>
-                </div>
-            `);
+            // Create the data object to send to the Google Sheet
+            const data = {
+                rowNumber: rowNumber,
+                inputText: inputText,
+                dropdown1: dropdown1,
+                dropdown2: dropdown2
+            };
+
+            // Send the data to the Google Apps Script API using fetch()
+            fetch(apiUrl, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Row submitted successfully!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         }
     </script>
-</div>
-
-<script src="scripts.js"></script>
-
-  <div id="loading"><p>Loading...</p></div>
-
-  <script type="text/html">
-    <p><%- sheet_name.length %> rows in the worksheet</p>
-  </script>
-
-  <div id="footer">
-  </div>
 </body>
 </html>

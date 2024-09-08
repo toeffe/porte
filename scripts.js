@@ -66,7 +66,7 @@ function newrow(number) {
             document.addEventListener('DOMContentLoaded', async function () {
               div = document.getElementById("container")
              
-              div.innerHTML = newrow()
+              div.innerHTML = newrow(15)
              
              
              }

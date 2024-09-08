@@ -53,13 +53,12 @@
             // Send the data to the Google Apps Script API using fetch()
             fetch(apiUrl, {
               redirect: "follow",
-              crossDomain: true,
               method: "POST",
               body: JSON.stringify(data),
               headers: {
-             "Content-Type": "text/plain;charset=utf-8",
-              },
-             })
+                "Content-Type": "text/plain;charset=utf-8",
+                  },
+               })
             .then(response => response.text())
             .then(data => {
                 console.log('Success:', data);

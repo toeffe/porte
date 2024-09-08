@@ -44,7 +44,7 @@
                       <input type="text" placeholder="Info" class="inputText" id="input-${i}">
                       
                       <!-- First dropdown menu -->
-                      <select class="color-select" onchange="changeColor(${i}, this.value)">
+                      <select class="dropdown1" onchange="changeColor(${i}, this.value)">
                           <option value="default"></option>
                           <option value="unload">Unload</option>
                           <option value="load">Load</option>
@@ -52,7 +52,7 @@
                       </select>
       
                       <!-- Second dropdown menu with 5 options -->
-                      <select class="option-select">
+                      <select class="dropdown2">
                           <option value="option1"></option>
                           <option value="option2">ARDO</option>
                           <option value="option3">TCB</option>
@@ -98,11 +98,11 @@ function clearRow(rowNumber) {
   const row = document.getElementById(`row-${rowNumber}`);
   
   // Reset first dropdown (color-select)
-  const firstDropdown = row.querySelector('.color-select');
+  const firstDropdown = row.querySelector('.dropdown1');
   firstDropdown.value = 'default';
   
   // Reset second dropdown (option-select)
-  const secondDropdown = row.querySelector('.option-select');
+  const secondDropdown = row.querySelector('.dropdown2');
   secondDropdown.value = 'option1'; // Default to the first option
 
   // Clear the text input field

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Port Husker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- TODO: Add your spreadsheet RSS feed URL and uncomment the following lines -->
+  <!-- <link rel="alternate" type="application/rss+xml" title="TITLE" href="" /> -->
+
+  <link rel="stylesheet" href="css/text.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="js/underscore-min.js"></script>
+  <script type="text/javascript" src="js/gooss.js"></script>
+  <script type="text/javascript">
+    // TODO: Change this to the URL of your spreadsheet.
+    var url = "https://docs.google.com/spreadsheets/d/1qkFgiNkCF09Vpft7k5x6fEb3mqTFIOV1bjQSefbN85c/edit?usp=sharing";
+
+    // DOMContentLoaded is not available IE < 9. Use a different load method
+    // if you wish to target lower IE versions.
+    document.addEventListener("DOMContentLoaded", function() {
+      // TODO: Change "sheet_name" to the name you want to use
+      gooss.data({ sheet_name: {url: url, index: 0} }, function(err, data) {
+        if (err) {
+          document.getElementById("loading").innerHTML = "Error: " + err;
+          return;
+        }
+        gooss.template(data);
+        document.getElementById("loading").style.display = "none";
+      });
+    }, false);
+  </script>
+</head>
+<body>
+  <!-- TODO: Change this title (remember to change the <title> tag as well) -->
+  <h1>Port nummer - Info - Handling - Kunde</h1>
+
+  <div class="container">
+    <!-- Create rows from 1 to 15 -->
+    <script>
+        for (let i = 1; i <= 15; i++) {
+            document.write(`
+                <div class="row" id="row-${i}">
+                    <span class="number">Port ${i}</span>
+                    <input type="text" placeholder="Info" class="row-input" id="input-${i}">
+                    
+                    <!-- First dropdown menu (same as before) -->
+                    <select class="color-select" onchange="changeColor(${i}, this.value)">
+                        <option value="default"></option>
+                        <option value="unload">Unload</option>
+                        <option value="load">Load</option>
+                        <option value="special">Special</option>
+                    </select>
+
+                    <!-- Second dropdown menu with 8 options -->
+                    <select class="option-select">
+                        <option value="option1"></option>
+                        <option value="option2">ARDO</option>
+                        <option value="option3">TCB</option>
+                        <option value="option4">Flensted</option>
+                        <option value="option5">TF</option>
+                    </select>
+
+                    <button onclick="clearRow(${i})">Clear row</button>
+                </div>
+            `);
+        }
+    </script>
+</div>
+
+<script src="scripts.js"></script>
+
+  <div id="loading"><p>Loading...</p></div>
+
+  <!-- TODO: Replace the contents of this script tag with your template -->
+  <script type="text/html">
+    <p><%- sheet_name.length %> rows in the worksheet</p>
+  </script>
+
+  <div id="footer">
+  </div>
+</body>
+</html>

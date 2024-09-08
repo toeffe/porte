@@ -3,7 +3,7 @@
 
         function sendData(rowNumber) {
             // Select the row's input fields and dropdowns
-            const row = document.querySelectorAll(".row")[rowNumber - 1];
+            const row = document.getElementById(`row-${rowNumber}`);
             const inputText = row.querySelector(".inputText").value;
             const dropdown1 = row.querySelector(".dropdown1").value;
             const dropdown2 = row.querySelector(".dropdown2").value;

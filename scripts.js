@@ -22,7 +22,7 @@
 
   <script>
     // Your Google Apps Script Web App URL
-    const apiUrl = 'https://script.google.com/macros/s/AKfycbzQQHSRG6Y0nEhWYkn2O9pjNQbNnrRsrDu52kp8Nv9LMit-NiUf8I5_lziGLqzNGO5v7Q/exec';
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbyyJ-7OOpHOHu3FWiOO1nKJcG5TVS_MSWoasRF8bAWXQHZAt_ftZAiviYmTecKBFun0/exec';
 
     function sendData(rowNumber) {
       const row = document.querySelectorAll(".row")[rowNumber - 1];

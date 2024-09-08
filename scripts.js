@@ -40,7 +40,7 @@
 
         
 fetch(apiUrl2, {
-  method: 'GET',
+  method: 'POST',
   body: data,
   headers: {
       'Content-Type': 'text/plain;charset=utf-8',

@@ -34,3 +34,32 @@
                 console.error('Error:', error);
             });
         }
+
+function newrow(number) {
+            for (let i = 1; i <= number; i++) {
+                document.write(`
+                    <div class="row" id="row-${i}">
+                        <span class="number">Port ${i}</span>
+                        <input type="text" placeholder="Info" class="row-input" id="input-${i}">
+                        
+                        <!-- First dropdown menu (same as before) -->
+                        <select class="color-select" onchange="changeColor(${i}, this.value)">
+                            <option value="default"></option>
+                            <option value="unload">Unload</option>
+                            <option value="load">Load</option>
+                            <option value="special">Special</option>
+                        </select>
+
+                        <!-- Second dropdown menu with 8 options -->
+                        <select class="option-select">
+                            <option value="option1"></option>
+                            <option value="option2">ARDO</option>
+                            <option value="option3">TCB</option>
+                            <option value="option4">Flensted</option>
+                            <option value="option5">TF</option>
+                        </select>
+
+                        <button onclick="clearRow(${i})">Clear row</button>
+                    </div>
+                `);
+            } }

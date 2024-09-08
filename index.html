@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Entry to Google Sheets</title>
+    <title>Oversigten</title>
 </head>
 <body>
+  <h1>Port nummer - Info - Handling - Kunde</h1>
     <div id="data-rows">
         <!-- Row 1 -->
         <div class="row">
@@ -27,9 +28,17 @@
                 <option value="Option8">Option 8</option>
             </select>
             <button onclick="sendData(1)">Submit Row</button>
+            <button onclick="clearRow(${i})">Clear row</button>
         </div>
         <!-- Repeat rows as needed -->
     </div>
+
+    <div class="container">
+      <!-- Create rows from 1 to 15 -->
+
+  </div>
+
+
     <script src="scripts.js"></script>
 </body>
 </html>

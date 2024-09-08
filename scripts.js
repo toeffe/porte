@@ -54,10 +54,10 @@
                       <!-- Second dropdown menu with 5 options -->
                       <select class="dropdown2">
                           <option value="option1"></option>
-                          <option value="option2">ARDO</option>
-                          <option value="option3">TCB</option>
-                          <option value="option4">Flensted</option>
-                          <option value="option5">TF</option>
+                          <option value="ARDO">ARDO</option>
+                          <option value="TCB">TCB</option>
+                          <option value="Flensted">Flensted</option>
+                          <option value="TF">TF</option>
                       </select>
                       <button onclick="sendData(${i})">Submit Row</button>
     

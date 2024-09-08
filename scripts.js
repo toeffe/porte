@@ -41,7 +41,7 @@
               html += `
                   <div class="row" id="row-${i}">
                       <span class="number">Port ${i}</span>
-                      <input type="text" placeholder="Info" class="row-input" id="input-${i}">
+                      <input type="text" placeholder="Info" class="inputText" id="input-${i}">
                       
                       <!-- First dropdown menu -->
                       <select class="color-select" onchange="changeColor(${i}, this.value)">

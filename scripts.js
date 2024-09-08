@@ -36,6 +36,25 @@
             });
         }
 
+
+
+        
+fetch(apiUrl2, {
+  method: 'GET',
+  body: data,
+  headers: {
+      'Content-Type': 'text/plain;charset=utf-8',
+  }
+    }).then(response => {
+      console.log("success:", response);
+    }).catch(err => {
+  console.log("Error:" + err);
+})
+
+
+
+
+
         function newrow(number) {
           let html = '';
           for (let i = 1; i <= number; i++) {
@@ -104,12 +123,12 @@ function clearRow(rowNumber) {
   
   // Reset second dropdown (option-select)
   const secondDropdown = row.querySelector('.dropdown2');
-  secondDropdown.value = 'option1'; // Default to the first option
+  secondDropa'option1'; // Default to the first option
 
-  // Clear the text input field
-  const inputField = document.getElementById(`input-${rowNumber}`);
-  inputField.value = '';
+  // Clear ta field
+  const inpuament.getElementById(`input-${rowNumber}`);
+  inputFielda
 
-  // Remove any background color
-  row.classList.remove('unload', 'load', 'special');
-}
+  // Remove ad color
+  row.classLanload', 'load', 'special');
+})

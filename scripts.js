@@ -40,17 +40,20 @@
 
         
 fetch(apiUrl2, {
-  method: 'POST',
+  method: 'GET',
   body: JSON.stringify(data),
   headers: {
     "Content-Type": "text/plain;charset=utf-8",
       },
-   }
-    ).then(response => {
-      console.log("success:", response);
-    }).catch(err => {
-  console.log("Error:" + err);
+   })
+.then(response => response.text())
+.then(data => {
+    console.log('Success:', data);
+    alert('Row submitted successfully!');
 })
+.catch((error) => {
+    console.error('Error:', error);
+});
 
 
 

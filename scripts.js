@@ -113,6 +113,7 @@ function changeColor(rowNumber, selectedOption) {
   }
 }
 
+
 // Function to clear the row's selection, reset color, and clear the input field
 function clearRow(rowNumber) {
   const row = document.getElementById(`row-${rowNumber}`);
@@ -123,12 +124,12 @@ function clearRow(rowNumber) {
   
   // Reset second dropdown (option-select)
   const secondDropdown = row.querySelector('.dropdown2');
-  secondDropa'option1'; // Default to the first option
+  secondDropdown.value = 'option1'; // Default to the first option
 
-  // Clear ta field
-  const inpuament.getElementById(`input-${rowNumber}`);
-  inputFielda
+  // Clear the text input field
+  const inputField = document.getElementById(`input-${rowNumber}`);
+  inputField.value = '';
 
-  // Remove ad color
-  row.classLanload', 'load', 'special');
-})
+  // Remove any background color
+  row.classList.remove('unload', 'load', 'special');
+}

@@ -69,7 +69,7 @@ function newrow(number) {
               div.innerHTML = newrow(15)
              
              
-             }
+             })
 
 
             // Function to change the color of the row based on dropdown selection

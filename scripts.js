@@ -59,7 +59,8 @@
                           <option value="option4">Flensted</option>
                           <option value="option5">TF</option>
                       </select>
-      
+                      <button onclick="sendData(1)">Submit Row</button>
+    
                       <button onclick="clearRow(${i})">Clear row</button>
                   </div>
               `;

@@ -51,10 +51,10 @@
             };
 
             // Send the data to the Google Apps Script API using fetch()
-            fetch(URL, {
+            fetch(apiUrl, {
               redirect: "follow",
               method: "POST",
-              body: JSON.stringify(DATA),
+              body: JSON.stringify(data),
               headers: {
              "Content-Type": "text/plain;charset=utf-8",
               },

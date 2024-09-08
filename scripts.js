@@ -1,5 +1,6 @@
         // Your Google Apps Script Web App URL (replace YOUR_DEPLOYED_SCRIPT_URL with the actual URL)
         const apiUrl = 'https://script.google.com/macros/s/AKfycbyyJ-7OOpHOHu3FWiOO1nKJcG5TVS_MSWoasRF8bAWXQHZAt_ftZAiviYmTecKBFun0/exec';
+        const apiUrl2 = 'https://script.google.com/macros/s/AKfycbxdjgJqQFnNVGSoZ8Kxb2j_ijNJ18VKEhGHQELAtDPYsnnd2MqKjr-6cslpkeDhlxyiGw/exec';
 
         function sendData(rowNumber) {
             // Select the row's input fields and dropdowns

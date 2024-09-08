@@ -41,11 +41,12 @@
         
 fetch(apiUrl2, {
   method: 'POST',
-  body: data,
+  body: JSON.stringify(data),
   headers: {
-      'Content-Type': 'text/plain;charset=utf-8',
-  }
-    }).then(response => {
+    "Content-Type": "text/plain;charset=utf-8",
+      },
+   }
+    ).then(response => {
       console.log("success:", response);
     }).catch(err => {
   console.log("Error:" + err);

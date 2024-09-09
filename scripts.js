@@ -63,8 +63,6 @@ function getData(number) {
 
                 const gate = row.row;
                 const info = row.value;
-                const handling = row.value;
-                const kunde = row.value;
 
                 // If gate is not a number, then skip
                 if (isNaN(gate)) {
@@ -73,14 +71,6 @@ function getData(number) {
 
                 // If gate is higher than 'number', then skip
                 if (gate > number) {
-                    return
-                }
-                
-                if ((handling)) {
-                    return
-                }
-
-                if (kunde) {
                     return
                 }
 

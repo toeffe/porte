@@ -39,6 +39,51 @@ function sendData(rowNumber) {
         });
 }
 
+// Get data to Google Apps
+function getData(number) {
+
+    // Your Google Apps Script Web App URL (replace YOUR_DEPLOYED_SCRIPT_URL with the actual URL)
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbxdjgJqQFnNVGSoZ8Kxb2j_ijNJ18VKEhGHQELAtDPYsnnd2MqKjr-6cslpkeDhlxyiGw/exec';
+
+    // Send the data to the Google Apps Script API using fetch()
+    fetch(apiUrl, {
+        redirect: "follow",
+        method: "GET",
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+        },
+    })
+        .then(response => response.text())
+        .then(data => {
+            // console.log('Success:', JSON.parse(data));
+            const rows = JSON.parse(data);
+
+            rows.forEach(row => {
+                // console.log(`Row: ${row.row}, Value: ${row.value}`);
+
+                const gate = row.row;
+                const info = row.value;
+
+                // If gate is not a number, then skip
+                if (isNaN(gate)) {
+                    return
+                }
+
+                // If gate is higher than 'number', then skip
+                if (gate > number) {
+                    return
+                }
+
+                // Search for the input-x field and update its value
+                const inputField = document.getElementById(`input-${gate}`);
+                inputField.value = info;
+            });
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
+
 // Create x number of rows 
 function newrow(number) {
     let html = '';
@@ -77,7 +122,11 @@ function newrow(number) {
 document.addEventListener('DOMContentLoaded', async function () {
     div = document.getElementById("container")
 
-    div.innerHTML = newrow(15)
+    rows = 15;
+
+    div.innerHTML = newrow(rows)
+
+    getData(rows);
 
 
 })
